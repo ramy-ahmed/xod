@@ -526,6 +526,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.2.tgz#d77f9faa027cadad9c912cd47f4f8b07b0fb0864"
   integrity sha512-53ElVDSnZeFUUFIYzI8WLQ25IhWzb6vbddNp8UHlXQyU0ET2RhV5zg0NfubzU7iNMh5bBXb0htCzfvrSVNgzaQ==
 
+"@types/node@^10.11.3":
+  version "10.12.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.11.tgz#715c476c99a5f6898a1ae61caf9825e43c03912e"
+  integrity sha512-3iIOhNiPGTdcUNVCv9e5G7GotfvJJe2pc9w2UgDXlUwnxSZ3RgcUocIU+xYm+rTU54jIKih998QE4dMOyMN1NQ==
+
 "@types/node@^7.0.18":
   version "7.0.46"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.46.tgz#c3dedd25558c676b3d6303e51799abb9c3f8f314"
@@ -11913,6 +11918,13 @@ promise@^7.0.1, promise@^7.1.1:
   integrity sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==
   dependencies:
     asap "~2.0.3"
+
+promisify-child-process@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/promisify-child-process/-/promisify-child-process-2.1.2.tgz#5fee4fd3a462a069178d4434d453a00b8d8f6a77"
+  integrity sha512-j2BRwNaM7fUwrd67avtqSTRevQXZiqS+T4Ky3VVaQdvzkPpsTByBAv+ZyBxuXgV/eUrCe2qYrOZvPvd+sMryeg==
+  dependencies:
+    "@types/node" "^10.11.3"
 
 prompt-actions@^3.0.2:
   version "3.0.2"

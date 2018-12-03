@@ -1,0 +1,23 @@
+{
+  "name": "tmp-wasm-runner",
+  "version": "0.25.2",
+  "description": "TODO",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src/ -d dist/ --source-maps",
+    "clean:dist": "rimraf ./dist",
+    "dev": "yarn run build --watch"
+  },
+  "keywords": [
+    "xod",
+    "xodlang"
+  ],
+  "author": "XOD Team <dev@xod.io>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "promisify-child-process": "^2.1.2",
+    "ramda": "0.24.1"
+  },
+  "devDependencies": {}
+}
