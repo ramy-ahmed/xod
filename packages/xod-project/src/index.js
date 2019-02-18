@@ -82,6 +82,8 @@ export {
   samePatchValidity,
   validateBuses,
   hasNodeWithType,
+  convertPatchDimensionsToSlots,
+  convertPatchDimensionsToPixels,
 } from './patch';
 export {
   getFilename as getAttachmentFilename,
@@ -130,8 +132,12 @@ export {
   ensureLiteral,
   migrateBoundValuesToBoundLiterals,
 } from './migrations/boundValuesToBoundLiterals';
+export {
+  default as migrateOldDimensionsToSlots,
+} from './migrations/oldDimensionsToSlots';
 export { sortGraph } from './gmath';
 export { BUILT_IN_TERMINAL_PATCH_PATHS } from './builtinTerminalPatches';
+export * from './nodeLayout';
 
 export const jumperizePatchRecursively = curry(jumperizePatchRecursivelyU);
 export const splitLinksToBuses = curry(splitLinksToBusesU);

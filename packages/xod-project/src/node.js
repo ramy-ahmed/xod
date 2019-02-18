@@ -14,6 +14,14 @@ import {
   getBaseName,
   isSpecializationPatchBasename,
 } from './patchPathUtils';
+import {
+  normalizePosition,
+  normalizeSize,
+  convertPositionToPixels,
+  convertPositionToSlots,
+  convertSizeToPixels,
+  convertSizeToSlots,
+} from './internal/dimensionConverters';
 
 /**
  * @typedef {Object} Node
@@ -55,12 +63,12 @@ export const createNode = def(
     '@@type': 'xod-project/Node',
     id: Utils.generateId(),
     type,
-    position,
+    position: normalizePosition(position),
     label: '',
     description: '',
     boundLiterals: {},
     arityLevel: 1,
-    size: { width: 0, height: 0 },
+    size: normalizeSize({ width: 0, height: 0 }),
   })
 );
 
@@ -155,7 +163,8 @@ export const setNodeDescription = def(
  */
 export const setNodePosition = def(
   'setNodePosition :: Position -> Node -> Node',
-  R.assoc('position')
+  (position, node) =>
+    R.compose(R.assoc('position', R.__, node), normalizePosition)(position)
 );
 
 /**
@@ -172,7 +181,7 @@ export const getNodeSize = def('getNodeSize :: Node -> Size', R.prop('size'));
 
 export const setNodeSize = def(
   'setNodeSize :: Size -> Node -> Node',
-  R.assoc('size')
+  (size, node) => R.compose(R.assoc('size', R.__, node), normalizeSize)(size)
 );
 
 /**
@@ -345,4 +354,32 @@ export const getPinNodeDirection = def(
     [isInputPinNode, R.always(CONST.PIN_DIRECTION.INPUT)],
     [isOutputPinNode, R.always(CONST.PIN_DIRECTION.OUTPUT)],
   ])
+);
+
+/**
+ * Returns Node with converted Position and Size properties into slot units.
+ */
+export const convertNodeDimensionsToSlots = def(
+  'convertNodeDimensionsToSlots :: Node -> Node',
+  node => {
+    const position = R.compose(convertPositionToSlots, getNodePosition)(node);
+    const size = R.compose(convertSizeToSlots, getNodeSize)(node);
+    return R.compose(R.assoc('size', size), R.assoc('position', position))(
+      node
+    );
+  }
+);
+
+/**
+ * Returns Node with converted Position and Size properties into pixel units.
+ */
+export const convertNodeDimensionsToPixels = def(
+  'convertNodeDimensionsToPixels :: Node -> Node',
+  node => {
+    const position = R.compose(convertPositionToPixels, getNodePosition)(node);
+    const size = R.compose(convertSizeToPixels, getNodeSize)(node);
+    return R.compose(R.assoc('size', size), R.assoc('position', position))(
+      node
+    );
+  }
 );

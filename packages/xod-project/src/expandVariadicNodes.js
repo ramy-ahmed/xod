@@ -10,6 +10,7 @@ import * as Patch from './patch';
 import * as Project from './project';
 import { TERMINAL_PIN_KEYS, PIN_DIRECTION } from './constants';
 import { getExpandedVariadicPatchPath } from './patchPathUtils';
+import { SLOT_SIZE } from './nodeLayout';
 
 //
 // expanding a single patch
@@ -47,7 +48,7 @@ const createAdditionalValueTerminalGroups = (
     R.prop('value')
   )(variadicPins);
 
-  const DISTANCE_BETWEEN_TERMINALS = 50;
+  const DISTANCE_BETWEEN_TERMINALS = SLOT_SIZE.WIDTH;
   const valueTerminalsGroupWidth = arityStep * DISTANCE_BETWEEN_TERMINALS;
   const getValueTerminalX = (terminalGroupIndex, terminalIndex) =>
     rightmostInputTerminalX +
@@ -77,12 +78,16 @@ const createAdditionalValueTerminalGroups = (
 
 const createExpansionNodes = (patch, desiredArityLevel) => {
   const nodeType = Patch.getPatchPath(patch);
+  const arityStep = R.compose(
+    explodeMaybe('Patch is guaranteed to be variadic at this point'),
+    Patch.getArityStepFromPatch
+  )(patch);
   return R.compose(
     R.map(idx =>
       Node.createNode(
         {
-          x: 100 * idx,
-          y: 100 * idx,
+          x: SLOT_SIZE.WIDTH * arityStep * idx,
+          y: SLOT_SIZE.HEIGHT * (idx + 1),
         },
         nodeType
       )

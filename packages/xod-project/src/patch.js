@@ -1927,3 +1927,34 @@ export const samePatchValidity = def(
   'samePatchValidity :: Patch -> Patch -> Boolean',
   R.allPass([sameNodesList, sameLinksList, sameNodeTypes, sameNodeBoundValues])
 );
+
+// =============================================================================
+//
+// Dimension converters
+//
+// =============================================================================
+
+const convertPatchDimensionsWith = def(
+  'convertPatchDimensionsWith :: (Node -> Node) -> (Comment -> Comment) -> Patch -> Patch',
+  (convertNodeFn, convertCommentFn, patch) => {
+    const nodes = R.compose(R.map(convertNodeFn), listNodes)(patch);
+    const comments = R.compose(R.map(convertCommentFn), listComments)(patch);
+    return R.compose(upsertComments(comments), upsertNodes(nodes))(patch);
+  }
+);
+
+export const convertPatchDimensionsToSlots = def(
+  'convertPatchDimensionsToSlots :: Patch -> Patch',
+  convertPatchDimensionsWith(
+    Node.convertNodeDimensionsToSlots,
+    Comment.convertCommentDimensionsToSlots
+  )
+);
+
+export const convertPatchDimensionsToPixels = def(
+  'convertPatchDimensionsToPixels :: Patch -> Patch',
+  convertPatchDimensionsWith(
+    Node.convertNodeDimensionsToPixels,
+    Comment.convertCommentDimensionsToPixels
+  )
+);

@@ -3,14 +3,10 @@ import { Maybe } from 'ramda-fantasy';
 import * as XP from 'xod-project';
 import { foldMaybe } from 'xod-func-tools';
 
-const BASE_SIZE_UNIT = 5;
+const BASE_SIZE_UNIT = XP.BASE_SIZE_UNIT;
 
-export const NODE_HEIGHT = BASE_SIZE_UNIT * 13;
-
-export const SLOT_SIZE = {
-  WIDTH: BASE_SIZE_UNIT * 8 + 4,
-  HEIGHT: NODE_HEIGHT + BASE_SIZE_UNIT * 8,
-};
+export const NODE_HEIGHT = XP.NODE_HEIGHT;
+export const SLOT_SIZE = XP.SLOT_SIZE;
 
 const PINVALUE_GAP = 4;
 export const PINVALUE_WIDTH = SLOT_SIZE.WIDTH - PINVALUE_GAP / 2;

@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import { subtractObject } from 'xod-func-tools';
 
+import { UNITS } from './nodeLayout';
 import { def } from './types';
 
 export const OPTIONAL_NODE_FIELDS = {
@@ -8,6 +9,10 @@ export const OPTIONAL_NODE_FIELDS = {
   description: '',
   label: '',
   arityLevel: 1,
+  size: { width: 0, height: 0, units: UNITS.SLOTS },
+};
+
+const OPTIONAL_NODE_LEGACY_SIZE_FIELD = {
   size: { width: 0, height: 0 },
 };
 
@@ -45,7 +50,10 @@ export const addMissingOptionalProjectFields = R.compose(
 
 export const omitEmptyOptionalNodeFields = def(
   'omitEmptyOptionalNodeFields :: Node -> Object',
-  subtractObject(OPTIONAL_NODE_FIELDS)
+  R.compose(
+    subtractObject(OPTIONAL_NODE_LEGACY_SIZE_FIELD),
+    subtractObject(OPTIONAL_NODE_FIELDS)
+  )
 );
 
 export const omitEmptyOptionalPatchFields = def(

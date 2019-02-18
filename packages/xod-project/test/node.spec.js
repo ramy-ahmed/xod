@@ -2,6 +2,7 @@ import { assert } from 'chai';
 
 import * as Node from '../src/node';
 import * as CONST from '../src/constants';
+import { UNITS, SLOT_SIZE } from '../src/nodeLayout';
 
 import * as Helper from './helpers';
 
@@ -69,9 +70,23 @@ describe('Node', () => {
   describe('setNodePosition', () => {
     it('should return node in new position', () => {
       const node = Helper.defaultizeNode({ position: { x: 1, y: 1 } });
-      const newNode = Node.setNodePosition({ x: 10, y: 10 }, node);
 
-      assert.deepEqual(Node.getNodePosition(newNode), { x: 10, y: 10 });
+      const newNode = Node.setNodePosition({ x: 10, y: 10 }, node);
+      assert.deepEqual(Node.getNodePosition(newNode), {
+        x: 10,
+        y: 10,
+        units: UNITS.PIXELS,
+      });
+
+      const newNode2 = Node.setNodePosition(
+        { x: 2, y: 3, units: UNITS.SLOTS },
+        node
+      );
+      assert.deepEqual(Node.getNodePosition(newNode2), {
+        x: SLOT_SIZE.WIDTH * 2,
+        y: SLOT_SIZE.HEIGHT * 3,
+        units: UNITS.PIXELS,
+      });
     });
   });
   describe('getNodeLabel', () => {

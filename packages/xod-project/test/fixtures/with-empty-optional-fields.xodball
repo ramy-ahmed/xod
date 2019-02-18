@@ -17,7 +17,8 @@
           },
           "size": {
             "width": 0,
-            "height": 0
+            "height": 0,
+            "units": "slots"
           },
           "arityLevel": 1,
           "type": "bob/awesome-library/test-patch"

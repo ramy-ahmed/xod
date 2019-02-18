@@ -5,8 +5,8 @@ import * as XP from '../src';
 describe('Comment', () => {
   describe('createComment', () => {
     it('should create Comment with specified position, size and content', () => {
-      const position = { x: 123, y: 456 };
-      const size = { width: 345, height: 678 };
+      const position = { x: 123, y: 456, units: XP.UNITS.PIXELS };
+      const size = { width: 345, height: 678, units: XP.UNITS.PIXELS };
       const content = 'test comment content';
 
       const comment = XP.createComment(position, size, content);
@@ -37,7 +37,7 @@ describe('Comment', () => {
 
     describe('setCommentPosition', () => {
       it('should return a new Comment with a specified Position', () => {
-        const newPosition = { x: 321, y: 765 };
+        const newPosition = { x: 321, y: 765, units: XP.UNITS.PIXELS };
         const newComment = XP.setCommentPosition(newPosition, defaultComment);
 
         assert.deepEqual(XP.getCommentPosition(newComment), newPosition);
@@ -46,7 +46,7 @@ describe('Comment', () => {
 
     describe('setCommentSize', () => {
       it('should return a new Comment with a specified Size', () => {
-        const newSize = { width: 888, height: 777 };
+        const newSize = { width: 888, height: 777, units: XP.UNITS.PIXELS };
         const newComment = XP.setCommentSize(newSize, defaultComment);
 
         assert.deepEqual(XP.getCommentSize(newComment), newSize);

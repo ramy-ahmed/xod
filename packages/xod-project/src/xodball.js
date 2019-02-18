@@ -14,17 +14,26 @@ import {
   omitPatches,
   injectProjectTypeHints,
   listGenuinePatches,
+  convertDimensionsToSlots,
+  convertDimensionsToPixels,
 } from './project';
 import {
   addMissingOptionalProjectFields,
   omitEmptyOptionalProjectFields,
 } from './optionalFieldsUtils';
+import migrateOldDimensionsToSlots from './migrations/oldDimensionsToSlots';
 import { Project, def } from './types';
 
 export const fromXodballData = def(
   'fromXodballData :: Object -> Either Error Project',
   R.compose(
-    R.map(injectProjectTypeHints),
+    R.map(
+      R.compose(
+        convertDimensionsToPixels,
+        migrateOldDimensionsToSlots,
+        injectProjectTypeHints
+      )
+    ),
     foldEither(() => fail('INVALID_XODBALL_FORMAT', {}), Either.of),
     validateSanctuaryType(Project),
     addMissingOptionalProjectFields
@@ -50,6 +59,7 @@ export const toXodball = def(
     p => JSON.stringify(p, null, 2),
     omitTypeHints,
     omitEmptyOptionalProjectFields,
+    convertDimensionsToSlots,
     R.converge(omitPatches, [
       R.compose(R.map(getPatchPath), listLibraryPatches),
       R.identity,

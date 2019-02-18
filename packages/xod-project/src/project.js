@@ -1284,3 +1284,40 @@ export const removeDebugNodes = def(
       getPatchDependencies(entryPatchPath)
     )(project)
 );
+
+// =============================================================================
+//
+// Dimension converters
+//
+// =============================================================================
+
+const convertProjectDimensionsWith = def(
+  'convertProjectDimensionsWith :: (Patch -> Patch) -> Project -> Project',
+  (convertPatchFn, project) =>
+    R.compose(
+      R.reduce((accProject, patch) => {
+        const patchPath = Patch.getPatchPath(patch);
+        const newPatch = convertPatchFn(patch);
+        return assocPatch(patchPath, newPatch, accProject);
+      }, project),
+      listGenuinePatches
+    )(project)
+);
+
+/**
+ * Converts Positions and Sizes of Nodes and Comment to slot units
+ * in the entire project. Returns converted project.
+ */
+export const convertDimensionsToSlots = def(
+  'convertDimensionsToSlots :: Project -> Project',
+  convertProjectDimensionsWith(Patch.convertPatchDimensionsToSlots)
+);
+
+/**
+ * Converts Positions and Sizes of Nodes and Comment to pixel units
+ * in the entire project. Returns converted project.
+ */
+export const convertDimensionsToPixels = def(
+  'convertDimensionsToPixels :: Project -> Project',
+  convertProjectDimensionsWith(Patch.convertPatchDimensionsToPixels)
+);

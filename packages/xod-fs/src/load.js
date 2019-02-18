@@ -222,6 +222,8 @@ export const loadProjectFromXodball = R.curry((workspaceDirs, xodballPath) =>
 // :: [Path] -> Path -> Promise Project Error
 export const loadProject = R.uncurryN(2, workspaceDirs =>
   R.composeP(
+    XP.convertDimensionsToPixels,
+    XP.migrateOldDimensionsToSlots,
     XP.migrateBoundValuesToBoundLiterals,
     R.ifElse(
       isExtname('.xodball'),

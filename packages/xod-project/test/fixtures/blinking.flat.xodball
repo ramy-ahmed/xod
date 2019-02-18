@@ -2203,6 +2203,22 @@
           }
         }
       },
+      "comments": {
+        "SyichvVHN": {
+          "content": "Test comment",
+          "id": "SyichvVHN",
+          "position": {
+            "x": 55,
+            "y": 105,
+            "units": "pixels"
+          },
+          "size": {
+            "height": 170,
+            "width": 176,
+            "units": "pixels"
+          }
+        }
+      },
       "path": "@/blink",
       "label": "Blink"
     }

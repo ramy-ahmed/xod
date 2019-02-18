@@ -2,6 +2,7 @@ import R from 'ramda';
 
 import * as H from './helpers';
 import * as XP from '../src';
+import { SLOT_SIZE } from '../src/nodeLayout';
 
 // assume that nodes have an unique combination of
 // type, label and position
@@ -33,20 +34,18 @@ describe('buses', () => {
   });
 
   describe('splitLinksToBuses', () => {
-    const SLOT_WIDTH = 30;
-    const SLOT_HEIGHT = 100;
-
     const getBusNodePositionForPin = (node, pin) => {
       const nodePosition = XP.getNodePosition(node);
       const pinDirection = XP.getPinDirection(pin);
       const pinOrder = XP.getPinOrder(pin);
 
-      return {
-        x: nodePosition.x + pinOrder * SLOT_WIDTH,
+      const r = {
+        x: nodePosition.x + pinOrder * SLOT_SIZE.WIDTH,
         y:
           nodePosition.y +
-          SLOT_HEIGHT * (pinDirection === XP.PIN_DIRECTION.INPUT ? -1 : 1),
+          SLOT_SIZE.HEIGHT * (pinDirection === XP.PIN_DIRECTION.INPUT ? -1 : 1),
       };
+      return r;
     };
 
     it('splits links with given ids to buses', () => {
