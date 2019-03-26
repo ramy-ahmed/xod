@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "content": "# Potentiometer\n\nA potentiometer reads an analog value from the hardware port and outputs a normalized value in the range from `0.0` to `1.0`, depending on the angle of the knob.\n\nIt brings an easy solution to control LEDs or servos using a potentiometer. Let's control the brightness of the LED with a potentiometer.\n\n## Instructions\n\n1. Connect a potentiometer to the Arduino according to the [scheme](https://xod.io/docs/tutorial/09-pot/?utm_source=ide&utm_medium=ide_comment&utm_campaign=tutorial_09).\n\n2. Set the `PORT` pin value on the `pot` node to A0, because it’s connected to analog Arduino port A0.\n\n3. Link the `pot` node `VAL` pin to the `LUM` pins on the `led` node.\n\n4. Upload your patch.",
+      "id": "ryWrUpd1uN",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 5,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "SJXRYJZOV",
+      "input": {
+        "nodeId": "HkETeKkO4",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "SyZzltkdE",
+        "pinKey": "H1sM2A12-"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "boundLiterals": {
+        "B1oqkTnIb": "D11"
+      },
+      "id": "HJBU6_1uV",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 3
+      },
+      "type": "xod/common-hardware/led"
+    },
+    {
+      "id": "HkETeKkO4",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 2
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "boundLiterals": {
+        "Hkry2AJhW": "A9"
+      },
+      "id": "SyZzltkdE",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 1
+      },
+      "type": "xod/common-hardware/pot"
+    }
+  ]
+}

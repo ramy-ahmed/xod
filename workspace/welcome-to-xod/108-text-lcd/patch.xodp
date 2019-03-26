@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "content": "# Display Text on LCD\n\nThere are many variants of liquid crystal displays (LCD) in the DIY electronics world. And XOD support LCD with two types of connection out of the box:\n- I2C\n- 8-pin\n\nTODO",
+      "id": "By72G_HbdN",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 5,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "BJ0UOrbdE",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 3
+      },
+      "type": "xod/common-hardware/text-lcd-16x2"
+    },
+    {
+      "id": "rJWvOSbuN",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 4
+      },
+      "type": "xod/common-hardware/text-lcd-16x2-i2c"
+    }
+  ]
+}

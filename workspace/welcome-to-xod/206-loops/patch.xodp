@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "content": "# Loops\n\nLet's improve the program from the previous exercise to make our custom blinking pattern works in the loop without the button.\n\nTo make the loop we need a special `defer` node. When `defer` node receives some value or pulses it postpones the execution of the node for the next transaction. To better understanding of the execution model read the [guide](https://xod.io/docs/guide/execution-model/#feedback-loops-handling).\n\nHowever, for now, you can remember to place `defer` nodes right in the places where you want to make a loop.\n\nNote, that `delay` nodes have custom labels to make the program more readable.\n\n## Instructions\n\n1. Place `defer` node and link it with the free `DONE` output.\n\n2. Replace `button` with the `or` node.\n\n3. Place the `boot` node above the `or` and link it.\n\n4. Link the `defer` with the free input pin of the `or` node or place the bus between them to keep the patch clean.\n\n5. Upload your program.\n\nNote, that we have to place `boot` to start the program. Then we'll get the pulse from the loop, and it works continuously. Also, you can bring the `button` back and start the loop manually.",
+      "id": "S1Noua9DuN",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 7,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "BJMsup9Pu4",
+      "input": {
+        "nodeId": "rklod69wd4",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "ByZs_TqvOV",
+        "pinKey": "HkU3vNoTW"
+      }
+    },
+    {
+      "id": "BJvk0cv_E",
+      "input": {
+        "nodeId": "ByH1C9w_V",
+        "pinKey": "SkSuD6LMb"
+      },
+      "output": {
+        "nodeId": "ryPnaqwON",
+        "pinKey": "Bk4gU0drwJ-"
+      }
+    },
+    {
+      "id": "BkCgR5DON",
+      "input": {
+        "nodeId": "HJ3g05P_N",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "ByH1C9w_V",
+        "pinKey": "HkU3vNoTW"
+      }
+    },
+    {
+      "id": "Bkqn65wOE",
+      "input": {
+        "nodeId": "ryPnaqwON",
+        "pinKey": "SkSuD6LMb"
+      },
+      "output": {
+        "nodeId": "ByZs_TqvOV",
+        "pinKey": "Bk4gU0drwJ-"
+      }
+    },
+    {
+      "id": "Hydb1oP_N",
+      "input": {
+        "nodeId": "S1LW1ov_4",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "SkVaTqwu4",
+        "pinKey": "SJyXI0OrD1-"
+      }
+    },
+    {
+      "id": "S1MvRqP_4",
+      "input": {
+        "nodeId": "ByZs_TqvOV",
+        "pinKey": "SkSuD6LMb"
+      },
+      "output": {
+        "nodeId": "rkT8C9wu4",
+        "pinKey": "SJjATKrlm"
+      }
+    },
+    {
+      "id": "SJ6k0qwu4",
+      "input": {
+        "nodeId": "SkVaTqwu4",
+        "pinKey": "HJCfI0dBDkb"
+      },
+      "output": {
+        "nodeId": "ByH1C9w_V",
+        "pinKey": "HkU3vNoTW"
+      }
+    },
+    {
+      "id": "SJR1A5vdN",
+      "input": {
+        "nodeId": "HJoOT9w_N",
+        "pinKey": "HyYh1a3LZ"
+      },
+      "output": {
+        "nodeId": "SkVaTqwu4",
+        "pinKey": "SJyXI0OrD1-"
+      }
+    },
+    {
+      "id": "SywRpcvdN",
+      "input": {
+        "nodeId": "SkVaTqwu4",
+        "pinKey": "BJaG80urD1-"
+      },
+      "output": {
+        "nodeId": "ByZs_TqvOV",
+        "pinKey": "HkU3vNoTW"
+      }
+    },
+    {
+      "id": "ryilRqD_4",
+      "input": {
+        "nodeId": "B1dxA9vdN",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "ryPnaqwON",
+        "pinKey": "HkU3vNoTW"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "B1dxA9vdN",
+      "position": {
+        "units": "slots",
+        "x": 12,
+        "y": 3
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "boundLiterals": {
+        "SkSuD6LMb": "On Boot",
+        "Skre8ROSv1-": "1"
+      },
+      "id": "ByH1C9w_V",
+      "label": "lights on",
+      "position": {
+        "units": "slots",
+        "x": 14,
+        "y": 2
+      },
+      "type": "xod/core/delay"
+    },
+    {
+      "boundLiterals": {
+        "SkSuD6LMb": "On Boot",
+        "Skre8ROSv1-": "5"
+      },
+      "id": "ByZs_TqvOV",
+      "label": "lights on",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 2
+      },
+      "type": "xod/core/delay"
+    },
+    {
+      "id": "HJ3g05P_N",
+      "position": {
+        "units": "slots",
+        "x": 15,
+        "y": 3
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "boundLiterals": {
+        "B1oqkTnIb": "D11"
+      },
+      "id": "HJoOT9w_N",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 4
+      },
+      "type": "xod/common-hardware/led"
+    },
+    {
+      "id": "S1LW1ov_4",
+      "position": {
+        "units": "slots",
+        "x": 11,
+        "y": 4
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "id": "SkVaTqwu4",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 3
+      },
+      "type": "xod/core/or"
+    },
+    {
+      "boundLiterals": {
+        "ByNiWkt8Z": "D13"
+      },
+      "id": "rkT8C9wu4",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 1
+      },
+      "type": "xod/common-hardware/button"
+    },
+    {
+      "id": "rklod69wd4",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 3
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "boundLiterals": {
+        "SkSuD6LMb": "On Boot",
+        "Skre8ROSv1-": "2"
+      },
+      "id": "ryPnaqwON",
+      "label": "lights off",
+      "position": {
+        "units": "slots",
+        "x": 11,
+        "y": 2
+      },
+      "type": "xod/core/delay"
+    }
+  ]
+}

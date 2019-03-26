@@ -1,0 +1,60 @@
+{
+  "comments": [
+    {
+      "content": "# Show Temperature on LCD\n\nShowing static text on the LCD is boring. So let's make a smarter device and show temperature on the LCD.\n\nWe'll use a tmp36 thermometer for this task, and we have a node `thermometer-tmp36` for this module in `xod/common-hardware` library. It outputs a temperature in degrees Celsius.\n\n## Instructions\n\n1. Add a thermometer to your [circuit as shown](https://xod.io/docs/tutorial/27-lcd-data/?utm_source=ide&utm_medium=ide_comment&utm_campaign=tutorial_27).\n\n2. Set the correct `PORT` for the `thermometer-tmp36` node.\n\n3. Link `Tc` output of `thermometer-tmp36` with `L1` of `text-lcd-16x2-i2c`\n\n4. Upload your patch\n\nNow you have a portable thermometer.\n\nAlso, you can convert Celsius into Fahrenheit using `xod/units/c-to-f` node if you prefer it.\n\nMoreover, you can add a `concat` node and show temperature on display like \"22C\" instead of just a number.",
+      "id": "ryQEf7FyO4",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 6,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "SyZtEYkOE",
+      "input": {
+        "nodeId": "SJOT7K1dE",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "SJm37Fkd4",
+        "pinKey": "rkFgMITM-"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "BJoArYJON",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 4
+      },
+      "type": "xod/common-hardware/text-lcd-16x2-i2c"
+    },
+    {
+      "id": "SJOT7K1dE",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 2
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "id": "SJm37Fkd4",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 1
+      },
+      "type": "xod/common-hardware/thermometer-tmp36"
+    }
+  ]
+}

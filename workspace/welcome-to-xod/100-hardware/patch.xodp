@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "content": "# Working with Hardware\n\nIn this section of the tutorial, you learn how to upload the program onto the board and work with hardware modules.\n\nTo upload programs to the Arduino, you need to [install the desktop version](https://xod.show/downloads/) of XOD. The browser version does not have permission to access the USB ports. Although you’re still able to upload XOD programs even from the browser version if you have the original Arduino IDE installed ([learn how](https://xod.io/docs/tutorial/02-deploy/?utm_source=ide&utm_medium=ide_comment&utm_campaign=tutorial_02)).\n\nIf you have no hardware,\nskip to `200-patterns` section and replace hardware nodes with `watch`es and `tweak`s.",
+      "id": "S1x6FBAP4",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 4,
+        "units": "slots",
+        "width": 7
+      }
+    },
+    {
+      "content": "## Table of contents\n",
+      "id": "rJ84qrRwV",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 0
+      },
+      "size": {
+        "height": 1,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "HJgVY6kOV",
+      "position": {
+        "units": "slots",
+        "x": 13,
+        "y": 1
+      },
+      "type": "@/103-led"
+    },
+    {
+      "id": "Hy3Vt6kdE",
+      "position": {
+        "units": "slots",
+        "x": 11,
+        "y": 2
+      },
+      "type": "@/106-servo"
+    },
+    {
+      "id": "S1gStak_E",
+      "position": {
+        "units": "slots",
+        "x": 15,
+        "y": 2
+      },
+      "type": "@/108-text-lcd"
+    },
+    {
+      "id": "SkMBtpkd4",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 3
+      },
+      "type": "@/109-tmp36"
+    },
+    {
+      "id": "Sy2mt6yO4",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 1
+      },
+      "type": "@/101-upload"
+    },
+    {
+      "id": "rJJEKTJd4",
+      "position": {
+        "units": "slots",
+        "x": 11,
+        "y": 1
+      },
+      "type": "@/102-interactive"
+    },
+    {
+      "id": "rJb4Y6Ju4",
+      "position": {
+        "units": "slots",
+        "x": 15,
+        "y": 1
+      },
+      "type": "@/104-button"
+    },
+    {
+      "id": "rkiEKa1dE",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 2
+      },
+      "type": "@/105-pot"
+    },
+    {
+      "id": "ry4Htp1u4",
+      "position": {
+        "units": "slots",
+        "x": 11,
+        "y": 3
+      },
+      "type": "@/110-ldr"
+    },
+    {
+      "id": "ryANFp1_4",
+      "position": {
+        "units": "slots",
+        "x": 13,
+        "y": 2
+      },
+      "type": "@/107-manipulator"
+    }
+  ]
+}

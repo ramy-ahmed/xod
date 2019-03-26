@@ -1,0 +1,60 @@
+{
+  "comments": [
+    {
+      "content": "# Analog sensor\n\nLet’s introduce a new sensor to measure an ambient light level.  A photoresistor (aka light dependent resistor or LDR) would do a great job of measuring the parameter. However, there is a small problem: we do not have a photoresistor node in XOD.\n\nWe have primary nodes for working with the digital and analog ports of the Arduino. A photoresistor is a pretty primitive device, and all we need to do is read its value from the analog port on the Arduino. To do so, we use an `analog-sensor` node.\n\n## Instructions\n\n1. Assemble the [circuit with LDR and LED](https://xod.io/docs/tutorial/17-ldr/?utm_source=ide&utm_medium=ide_comment&utm_campaign=tutorial_17).\n\n2. Link the `VAL` output pin of the `analog-sensor` node to the `LUM` pin of the led node.\n\n3. Upload the patch to the Arduino.\n\nCover the photoresistor with your hand, and watch how the brightness of the LED changes.",
+      "id": "S1GHxUKyON",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 6,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "S19OIF1dV",
+      "input": {
+        "nodeId": "S1v_8tJ_N",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "SkSOIt1ON",
+        "pinKey": "BkoeN9Ay7"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "S1v_8tJ_N",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 2
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "id": "SkSOIt1ON",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 1
+      },
+      "type": "xod/common-hardware/analog-sensor"
+    },
+    {
+      "id": "rJJbwKy_E",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 4
+      },
+      "type": "xod/common-hardware/led"
+    }
+  ]
+}

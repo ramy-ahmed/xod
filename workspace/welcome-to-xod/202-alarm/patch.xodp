@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "content": "# Alarm\n\nLet's make an alarm device, which turns the LED on when the temperature gets higher than the desired value.\n\nFor this task we need comparisons. XOD has `greater`-than and `less`-than nodes to make simple mathematical comparisons.\n\n## Instructions\n\n1. Link `Tc` pin with the first one of the `greater` node.\n\n2. Bind 30 to the second pin.\n\n3. Upload the program.\n\n4. Heat the thermometer.\n\nGreat! With the same way, you can add a fan to your circuit and turn it on to cool down the temperature.\n\n## Additional Exercise\n\n1. Replace the `greater` node with `less`.\n2. Use `pot` or `tweak-number` to adjust the alarm threshold.\n3. Use both `greater` and `less` nodes to alarm when the temperature is out of the range. Hint: you need the `or` node.",
+      "id": "rJIJ_OybOE",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 6,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "B1tsKyWdV",
+      "input": {
+        "nodeId": "SyOoFJZuV",
+        "pinKey": "HkXK-dGob"
+      },
+      "output": {
+        "nodeId": "rkn_YJWOE",
+        "pinKey": "B19RYS3lW"
+      }
+    },
+    {
+      "id": "BkitKkbdE",
+      "input": {
+        "nodeId": "HkFtYJb_N",
+        "pinKey": "HyYh1a3LZ"
+      },
+      "output": {
+        "nodeId": "rkn_YJWOE",
+        "pinKey": "B19RYS3lW"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "boundLiterals": {
+        "H1s0WI6MZ": "A1"
+      },
+      "id": "Bk1uu1bO4",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 0
+      },
+      "type": "xod/common-hardware/thermometer-tmp36"
+    },
+    {
+      "boundLiterals": {
+        "B1oqkTnIb": "D13"
+      },
+      "id": "HkFtYJb_N",
+      "position": {
+        "units": "slots",
+        "x": 8,
+        "y": 2
+      },
+      "type": "xod/common-hardware/led"
+    },
+    {
+      "id": "SyOoFJZuV",
+      "position": {
+        "units": "slots",
+        "x": 12,
+        "y": 2
+      },
+      "type": "xod/debug/watch"
+    },
+    {
+      "boundLiterals": {
+        "HJbACN3gb": "0"
+      },
+      "id": "rkn_YJWOE",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 1
+      },
+      "type": "xod/core/greater"
+    }
+  ]
+}

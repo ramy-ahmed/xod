@@ -1,0 +1,32 @@
+{
+  "comments": [
+    {
+      "content": "# Patterns\n\nBlah-blah-blah.\n\nTODO",
+      "id": "H1ILK61_E",
+      "position": {
+        "units": "slots",
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "height": 4,
+        "units": "slots",
+        "width": 7
+      }
+    },
+    {
+      "content": "## Table of contents",
+      "id": "rJeU8KTyu4",
+      "position": {
+        "units": "slots",
+        "x": 9,
+        "y": 0
+      },
+      "size": {
+        "height": 1,
+        "units": "slots",
+        "width": 7
+      }
+    }
+  ]
+}
