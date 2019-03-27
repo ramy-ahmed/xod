@@ -11,7 +11,11 @@ import listAvailableBoards from './listAvailableBoards';
 import parseProgressLog from './parseProgressLog';
 
 const IS_WIN = os.platform() === 'win32';
-const escapeSpacesNonWin = R.unless(() => IS_WIN, R.replace(/\s/g, '\\ '));
+const escapeSpaces = R.ifElse(
+  () => IS_WIN,
+  R.replace(/\s/g, '^ '),
+  R.replace(/\s/g, '\\ ')
+);
 
 /**
  * Initializes object to work with `arduino-cli`
@@ -29,7 +33,7 @@ const ArduinoCli = (pathToBin, config = null) => {
     runningProcesses = R.reject(R.equals(proc), runningProcesses);
   };
 
-  const escapedConfigPath = escapeSpacesNonWin(configPath);
+  const escapedConfigPath = escapeSpaces(configPath);
   const run = args => {
     const promise = exec(
       `"${pathToBin}" --config-file=${escapedConfigPath} ${args}`
@@ -52,7 +56,7 @@ const ArduinoCli = (pathToBin, config = null) => {
       R.split(' ')
     )(args);
 
-    const promise = spawn(escapeSpacesNonWin(pathToBin), spawnArgs, {
+    const promise = spawn(escapeSpaces(pathToBin), spawnArgs, {
       stdio: ['inherit', 'pipe', 'pipe'],
       shell: true,
     });
